@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Test Stream Event of Simple Peer </h1>
+    <video id='video'></video>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/simple-peer"></script>
+    <script>
+        const gdmOptions = {
+            video: {
+                cursor: "always"
+            },
+            audio: {
+                echoCancellation: true,
+                noiseSuppression: true,
+                sampleRate: 44100
+            }
+        }
+        var promise = navigator.mediaDevices.getDisplayMedia(gdmOptions);
+        promise.then(stream => {
+            console.log('media captured!');
+            var p1 = new SimplePeer({
+                initiator: true,
+                stream: stream,
+                trickle: false
+            });
+            var p2 = new SimplePeer({
+                initiator: false,
+                trickle: false
+            });
+
+            p1.on('signal', data => {
+                p2.signal(data);
+            });
+            p2.on('signal', data => {
+                p1.signal(data);
+            });
+
+            p1.on('connect', () => {
+                console.log('P1:Connected');
+            });
+            p2.on('connect', () => {
+                console.log('p2:connected!');
+            });
+            p2.on('stream', stream => {
+                if(stream)
+                console.log('p2: got media');
+                else
+                console.log('media obj undefined!');
+                var video = document.querySelector('video')
+                if ('srcObject' in video) {
+                    video.srcObject  = stream
+                } else {
+                    const objectURL = window.URL.createObjectURL(stream);
+                    video.src = objectURL; // for older browsers
+                }
+
+                 video.play()
+            });
+        });
+
+    </script>
+</body>
+</body>
+
+</html>

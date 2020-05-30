@@ -1,0 +1,39 @@
+With eventEmitter :Done
+--------------------------------------
+On Primary Peer Side
+User Action ->  instantiate peer -> generate Offer-> sendOffer----------------|
+ 									      | ----- |                                                 
+ 			  GetConnected<-processAnswer<-receiveAnswer----------|       |
+										      |
+On Secondary Peer Side								      | 
+										      |
+InstantiatePeer->|								      |
+                 |								      |
+                 |								      |
+                 |<- receivedOffer						      |
+                 |->CreateAnswer-> sendAnswer->|				      |
+                                               |--------------------------------------|
+          wait for Connection to be establish<-|
+                                 getConnected<-|
+
+With Socket.io :Done
+-----------------------------
+On Primary Peer Side
+instantiate io->io connect->socket created->|
+			                    |
+		  	 v------------------|
+
+User Action ->  instantiate peer -> generate Offer-> sendOffer----------------|
+ 									      | <---- |                                                 
+ 			  getConnected<-processAnswer<-receiveAnswer<---------|       |
+										      |
+On Secondary Peer Side								      | 
+										      |
+InstantiatePeer->|								      |
+                 |								      |
+                 |								      |
+                 |<- receivedOffer						      |
+                 |->CreateAnswer-> sendAnswer->|				      |
+                                               |--------------------------------------|
+          wait for Connection to be establish<-|
+                                 getConnected<-|

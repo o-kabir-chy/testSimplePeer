@@ -1,0 +1,100 @@
+Estimate of RCC
+-----------------------------
+Ratio: 1:2:4  ( or what ever)
+1+2+4=7
+say
+wet volume=100 cft
+dry volume=100*1.5 cft=150 cft 
+
+cement= 150/7 cft=(150*1/7)/1.25 bag=17.142 bag
+sand= 150*2/7 cft=42.85 cft
+stone/khoa= 150*4/7 cft=85.71 cft
+
+------------------------------------------ 
+Ratio: 1:(1:1):4  ( or what ever)
+local sand:syslhet sand=1:1 ( or what ever)
+
+1+1+1+4=7
+wet volume=100 cft
+dry volume=100*1.5 cft=150 cft
+
+cement=(150/7/1.25) bag=17.14 bag
+local sand=(150/7) cft=21.4 cft
+sylhet sand=(150/7) cft=21.4 cft
+khoa/stone= (150*4/7) cft=85.71 cft
+
+AND so on........
+-------------------------------------
+Estimate of 3" brick soling
+say for 100 sft of work
+
+no of brick= (100*12*12)/(5*10) nos= 288 nos
+-----------------------------------------
+
+Estimate of 5" brick Wall (with out plaster)
+
+say 100 sft of wall
+no of brick= (100*12*12)/(10*3) nos =480 nos.
+
+morter volume of 100 sft of brkick work= ((10*3)-(9.5*2.75))*480* 5  sq cubic inch   =  9300 cubic inch= 5.38 cft
+
+say ratio = cement:sand= 1:4
+1+4=5
+wet volume= 5.38 cft
+dry volume= 5.38 *1.5 cft= 8.07 cft
+
+cement= 8.07 *1/5 cft=1.614 cft = 1.614/1.25 bag= 1.29 bag
+sand =8.07*4/5 cft=6.456 cft
+-------------------------------------------
+
+Estimate of 10" brick work
+
+say 100 cft of work
+no of brick=(100*12*12*12)/(10*5*3)=172800/150 nos=1152 nos
+
+morter volume =((10*5*3)-(9.5*4.5*2.75))*1152 cu inch= 37368 cu inch =21.63 cft 
+
+calculation of cement and sans as above
+-----------------------------------------
+
+
+plaster  
+
+say 100 sft of plaster thick ness =1/2 " and ratio 1:6  ( or what ever)
+1+6 =7 
+ 
+then plaster volume= 100*(.5/12) cft= 4.167 cft
+wet volume= 4.167 cft
+dry volume= 4.167 *1.5 cft= 6.25 cft
+
+cement =( 6.25 /7/1.25) bag=.714 bag
+sand= (6.25*6 /7) cft= 5.36 cft
+------------------------------------------------
+
+Estimate of Steel Works
+
+bar size    wt kg per ft      rft per ton
+-------------------------------------------------------
+8            0.120             8315.7  
+10           0.188             5322.0 
+12           0.270             3695.9
+16           0.480             2078.9
+20           0.751             1330.5
+25           1.174              851.5
+------------------------------------------
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
