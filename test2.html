@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Test MediaManager</h1>
+    <video id='my-video'></video>
+    <script src='/lib'></script>
+    <script>
+        const gdmOptions = {
+      video: {
+        cursor: "always"
+      },
+      audio: {
+        echoCancellation: true,
+        noiseSuppression: true,
+        sampleRate: 44100
+      }
+    }
+       MediaManager.getDisplayMedia(gdmOptions).then(stream=>{
+           console.log('got display  Media! ');
+           MediaManager.captureVideo('my-video');
+       });  
+    </script>
+    </body>
+</body>
+</html>
