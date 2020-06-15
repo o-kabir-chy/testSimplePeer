@@ -7,13 +7,13 @@
   <title>SimplePeerTest</title>
   <!-- <script  src="main.js"/> -->
   <script src="/socket.io/socket.io.js"></script>
- 
+
   <!-- <script src="node_modules/simple-peer/simplepeer.min.js" ></script> -->
- 
+
   <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
   <script src="/simple-peer"></script>
   <!-- <script src="/lib"></script> -->
-   <script data-main="app.js" src="/requirejs"></script>
+  <script data-main="app.js" src="/requirejs"></script>
 </head>
 
 <body>
@@ -22,82 +22,37 @@
   <script>
     var socket = io();
     socket.emit('m', "hi");
-    const gdmOptions = {
-      video: {
-        cursor: "always"
-      },
-      audio: {
-        echoCancellation: true,
-        noiseSuppression: true,
-        sampleRate: 44100
-      }
-    }
-
-    var ui={};
-    require(["./uiService"],function(uiService){
-     // console.log(uiService);
-      ui=new uiService(socket);
+    
+    require(['./connectionService'], function (connectionService) {
+      var cs=new connectionService(socket);
+      cs.Connect(1).then(r => {
+        if (r)
+          return cs.Disconnect(5);
+      }).then(r => {
+        if (r) {
+          return cs.Reconnect(5);
+        }
+      }).then(r => {
+        if (r)
+          return cs.connectWithDisplayMedia(3);
+      }).then(r => {
+        console.log(r ? "success" : "failure");
+      }).catch(e => { console.log(e) });
     });
-    console.log(ui);
-    function connect(sec) {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          console.log('after %s sec', sec);
-          console.log('after %s sec', sec);
-         // var ui = new UI(socket);
-          console.log('just connecting!');
-          ui.Connect();
-          resolve(true);
-        }, sec * 1000);
-      });
-    }
 
-    function Disconnect(sec) {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          console.log('after %s sec', sec);
-          ui.Disconnect();
-          resolve(true);
-        }, sec * 1000);
-      });
-    }
-    function Reconnect(sec) {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          console.log('after %s sec', sec);
-          ui.Connect();
-          resolve(true);
-        }, sec * 3000);
-      });
-    }
-     function connectWithDisplayMedia(sec) {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          console.log('after %s sec', sec);
-          var promise = navigator.mediaDevices.getDisplayMedia(gdmOptions);
-          promise.then(stream => {
-            //var ui = new UI(socket);
-            console.log('connecting with stream');
-            ui.Connect(stream);
-            resolve(true);
-          });
-        }, sec * 1000);
-      });
-    }
-
-   connect(1).then(r=>{
-     if(r)
-       return Disconnect(5);
-   }).then(r=>{
-     if(r){
-       return Reconnect(5);
-     }
-   }).then(r=>{
-      if(r)
-      return connectWithDisplayMedia(3); 
-   }).then(r=>{
-     console.log(r?"success":"failure");
-   }).catch(e=>{console.log(e)});
+  //  connect(1).then(r=>{
+  //    if(r)
+  //      return Disconnect(5);
+  //  }).then(r=>{
+  //    if(r){
+  //      return Reconnect(5);
+  //    }
+  //  }).then(r=>{
+  //     if(r)
+  //     return connectWithDisplayMedia(3); 
+  //  }).then(r=>{
+  //    console.log(r?"success":"failure");
+  //  }).catch(e=>{console.log(e)});
 
 
 
