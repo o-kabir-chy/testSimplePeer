@@ -3,7 +3,7 @@ class SignalingService {
         this.userManager = userManager;
         this.io = io;
     }
-    offerTo = async function (offerObj) {
+   async  offerTo  (offerObj) {
         return new Promise((resolve, reject) => {
             var offerObj_ = JSON.parse(offerObj);
             if (!offerObj_)
@@ -24,7 +24,7 @@ class SignalingService {
             });
         });
     };
-    answerTO = async function (answerObj) {
+    async answerTO (answerObj) {
         return new Promise((resolve, reject) => {
             var answerObj_ = JSON.parse(answerObj);
             if (!answerObj_) {
